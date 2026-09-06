@@ -1,0 +1,12 @@
+{
+  "name": "signal-watchlist",
+  "version": "1.0.0",
+  "description": "Smart Market Watchlist — Groww Code 2026 submission",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
