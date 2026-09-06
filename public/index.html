@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signal — a market watchlist that tells you why</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">Signal</span>
+    <span class="brand-sub">a watchlist that tells you why</span>
+  </div>
+  <div class="clock" id="clock">market simulation live</div>
+</header>
+
+<main class="layout">
+
+  <!-- Left rail: the ranked "signal board" -->
+  <section class="rail" aria-label="Watchlist ranked by attention score">
+    <div class="rail-head">
+      <h2>Your board</h2>
+      <p class="hint">Ranked by what deserves attention now — not A–Z.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="Add a ticker — try CHIPFAB, SPACEX2…" autocomplete="off" />
+      <div id="searchResults" class="search-results" hidden></div>
+    </div>
+
+    <ul id="board" class="board" aria-live="polite">
+      <!-- rows injected by app.js -->
+    </ul>
+
+    <p id="boardEmpty" class="empty" hidden>Nothing on your board yet. Add a ticker above to start tracking it.</p>
+  </section>
+
+  <!-- Main: the "what changed" feed + detail -->
+  <section class="feed" aria-label="What changed since you last checked">
+    <div class="feed-head">
+      <h1>What's changed since you last checked</h1>
+      <p class="hint">Sorted by significance, not raw size of move. A quiet stock's small move can outrank a wild stock's big one.</p>
+    </div>
+
+    <ul id="feedList" class="feed-list"></ul>
+    <p id="feedEmpty" class="empty" hidden>No meaningful moves right now. Everything on your board is behaving as expected.</p>
+  </section>
+
+  <!-- Detail drawer -->
+  <aside id="detail" class="detail" hidden aria-label="Ticker detail">
+    <button id="detailClose" class="detail-close" aria-label="Close">✕</button>
+    <div id="detailBody"></div>
+  </aside>
+
+</main>
+
+<footer class="legend">
+  <span><i class="dot dot-breakout"></i> Breakout / Reversal</span>
+  <span><i class="dot dot-volume"></i> Volume spike</span>
+  <span><i class="dot dot-gap"></i> Gap</span>
+  <span><i class="dot dot-news"></i> News</span>
+  <span><i class="dot dot-stale"></i> Stale data</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
